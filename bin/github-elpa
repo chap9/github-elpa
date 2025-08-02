@@ -84,6 +84,10 @@
   "Set tar executable name to ARG."
   (setq github-elpa-tar-executable arg))
 
+(defun github-elpa-bin-set-package-name (arg)
+  "Set package name to ARG"
+  (setq github-elpa-package-name arg))
+
 
 (commander
  (name "github-elpa")
@@ -104,6 +108,8 @@
          github-elpa-bin-set-recipes-dir)
  (option "--tar <tar-executable>, -t <tar-executable>"
          github-elpa-bin-set-tar-executable)
+ (option "--package <package-name>, -p <package-name>"
+         github-elpa-bin-set-package-name)
  )
 
 ;;; github-elpa ends here

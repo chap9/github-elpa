@@ -62,6 +62,9 @@
 (defvar github-elpa-tar-executable
   nil)
 
+(defvar github-elpa-package-name
+  nil)
+
 (defun github-elpa--git-check-repo ()
   "Check if current directory is git toplevel directory.
 If not throw error."
@@ -98,7 +101,7 @@ If not throw error."
     ;;(github-elpa--git-check-workdir-clean)
     (make-directory package-build-archive-dir t)
     ;; Currently no way to detect build failure...
-    (dolist (recipe (directory-files package-build-recipes-dir nil "^[^.]"))
+    (dolist (recipe (directory-files package-build-recipes-dir nil (or github-elpa-package-name "^[^.]")))
       (message "")
       (message "")
       (message ":: github-elpa: packaging recipe %s" recipe)
